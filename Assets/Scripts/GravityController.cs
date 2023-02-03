@@ -9,14 +9,17 @@ public class GravityController : MonoBehaviour
     void Update()
     {
         Vector3 vector=new Vector3();
+        //GetAxisは-1~1の値を返す
         vector.x=Input.GetAxis("Horizontal");
         vector.z=Input.GetAxis("Vertical");
 
+        //zキーを押している間true
         if(Input.GetKey("z")){
             vector.y=1.0f;
         }else{
             vector.y=-1.0f;
         }
+        //normalizedは長さを１にする。（方向キー同時押しで重力が強くなることを防止)
         Physics.gravity=Gravity*vector.normalized*gravityScale;
         
     }
